@@ -14,6 +14,7 @@ def deploy():
         _create_or_update_dotenv()
         _update_static_files()
         _update_database()
+        _restart_gunicorn()
 
 def _get_lastest_source():
     if exists('.git'):
@@ -43,3 +44,7 @@ def _update_static_files():
 
 def _update_database():
     run('./virtualenv/bin/python manage.py migrate --noinput')
+
+def _reload_and_restart_services():
+    run('sudo systemctl daemon-reload')
+    run(f'sudo systemctl gunicorn{env.host}.service')
