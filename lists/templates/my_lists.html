@@ -6,7 +6,7 @@
   <h2>{{ owner.email }}</h2>
   <ul>
     {% for list in owner.list_set.all %}
-      <li><a href="{{ list.get_absloute_url }}">{{ list.name }}</a></li>
+      <li><a href="{{ list.get_absolute_url }}">{{ list.name }}</a></li>
     {% endfor %}
   </ul>
 {% endblock %}

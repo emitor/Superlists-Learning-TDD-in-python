@@ -39,7 +39,7 @@ class MyListsTest(FunctionalTest):
         )
         self.browser.find_element_by_link_text('Reticulate splines').click()
         self.wait_for(
-            lambda: self.asserEqual(self.browser.current_url, first_list_url) 
+            lambda: self.assertEqual(self.browser.current_url, first_list_url) 
         )
 
         # She decides to start another list, just to see
@@ -54,14 +54,13 @@ class MyListsTest(FunctionalTest):
         )
         self.browser.find_element_by_link_text('Click cows').click()
         self.wait_for(
-            lambda: self.asserEqual(self.browser.current_url, second_list_url) 
+            lambda: self.assertEqual(self.browser.current_url, second_list_url) 
         )
 
         # She logs out. The "My lists" option disappears
         self.browser.find_element_by_link_text('Log out').click()
-        slef.wait_for(lambda: self.assertEqual(
-            self.browser.finde_element_by_link_name('My lists'),
+        self.wait_for(lambda: self.assertEqual(
+            self.browser.find_elements_by_link_text('My lists'),
             []
         ))
-
 

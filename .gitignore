@@ -8,3 +8,4 @@ __pycache__
 .env
 *.swp
 *.swo
+functional_tests/screendumps
